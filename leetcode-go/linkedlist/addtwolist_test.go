@@ -15,8 +15,8 @@ func Test_addTwoList(t *testing.T) {
 		args args
 		want *ListNode
 	}{
-		{"test", args{NewList([]int{6, 5, 8}), NewList([]int{3, 4, 7})}, NewList([]int{1, 0, 0, 5})},
-		{"test", args{NewList([]int{6, 5, 8}), NewList([]int{4, 3, 4, 7})}, NewList([]int{5, 0, 0, 5})},
+		{"test", args{NewList(6, 5, 8), NewList(3, 4, 7)}, NewList(1, 0, 0, 5)},
+		{"test", args{NewList(6, 5, 8), NewList(4, 3, 4, 7)}, NewList(5, 0, 0, 5)},
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {

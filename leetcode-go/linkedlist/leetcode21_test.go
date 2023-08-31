@@ -15,7 +15,7 @@ func Test_mergeTwoLists(t *testing.T) {
 		args args
 		want *ListNode
 	}{
-		{"test", args{NewList([]int{1, 2, 4}), NewList([]int{1, 3, 4})}, NewList([]int{1, 1, 2, 3, 4, 4})},
+		{"test", args{NewList(1, 2, 4), NewList(1, 3, 4)}, NewList(1, 1, 2, 3, 4, 4)},
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {

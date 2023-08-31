@@ -5,7 +5,7 @@ type ListNode struct {
 	Next *ListNode
 }
 
-func NewList(vals []int) *ListNode {
+func NewList(vals ...int) *ListNode {
 	h := &ListNode{}
 	p := h
 	for _, v := range vals {
