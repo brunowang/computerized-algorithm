@@ -23,6 +23,16 @@ func (n *ListNode) Vals() []int {
 	return vals
 }
 
+func (n *ListNode) Copy() *ListNode {
+	h := &ListNode{}
+	p := h
+	for i := n; i != nil; i = i.Next {
+		p.Next = &ListNode{Val: i.Val}
+		p = p.Next
+	}
+	return h.Next
+}
+
 func (n *ListNode) Link(node *ListNode, idx int) *ListNode {
 	p := node.Find(idx)
 	if p != nil {
