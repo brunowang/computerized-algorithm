@@ -22,3 +22,30 @@ func (n *ListNode) Vals() []int {
 	}
 	return vals
 }
+
+func (n *ListNode) Link(node *ListNode, idx int) *ListNode {
+	p := node.Find(idx)
+	if p != nil {
+		n.Next = p
+	}
+	return n
+}
+
+func (n *ListNode) LinkSelf(idx, nextIdx int) *ListNode {
+	node, next := n.Find(idx), n.Find(nextIdx)
+	if node != nil && next != nil {
+		node.Next = next
+	}
+	return n
+}
+
+func (n *ListNode) Find(idx int) *ListNode {
+	p := n
+	for i := 0; i < idx; i++ {
+		if p == nil {
+			return nil
+		}
+		p = p.Next
+	}
+	return p
+}
