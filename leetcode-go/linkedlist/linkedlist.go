@@ -35,9 +35,14 @@ func (n *ListNode) Copy() *ListNode {
 
 func (n *ListNode) Link(node *ListNode, idx int) *ListNode {
 	p := node.Find(idx)
-	if p != nil {
-		n.Next = p
+	if p == nil {
+		return n
 	}
+	var tail *ListNode
+	for i := n; i != nil; i = i.Next {
+		tail = i
+	}
+	tail.Next = p
 	return n
 }
 
