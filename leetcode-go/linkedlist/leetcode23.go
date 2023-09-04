@@ -12,7 +12,7 @@ func mergeKLists(lists []*ListNode) *ListNode {
 	}
 	vhead := &ListNode{}
 	p := vhead
-	pq := make(Queue, len(lists))
+	pq := make(PriorityQueue, len(lists))
 	for i, head := range lists {
 		if head != nil {
 			pq[i] = head
@@ -31,23 +31,23 @@ func mergeKLists(lists []*ListNode) *ListNode {
 	return vhead.Next
 }
 
-type Queue []*ListNode
+type PriorityQueue []*ListNode
 
-func (q Queue) Len() int { return len(q) }
+func (q PriorityQueue) Len() int { return len(q) }
 
-func (q Queue) Less(i, j int) bool {
+func (q PriorityQueue) Less(i, j int) bool {
 	return q[i].Val < q[j].Val
 }
 
-func (q Queue) Swap(i, j int) {
+func (q PriorityQueue) Swap(i, j int) {
 	q[i], q[j] = q[j], q[i]
 }
 
-func (q *Queue) Push(x interface{}) {
+func (q *PriorityQueue) Push(x interface{}) {
 	*q = append(*q, x.(*ListNode))
 }
 
-func (q *Queue) Pop() interface{} {
+func (q *PriorityQueue) Pop() interface{} {
 	old := *q
 	n := len(old)
 	x := old[n-1]
