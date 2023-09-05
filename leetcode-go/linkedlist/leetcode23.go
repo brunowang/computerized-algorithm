@@ -1,6 +1,9 @@
 package linkedlist
 
-import "container/heap"
+import (
+	"container/heap"
+	"github.com/brunowang/computerized-algorithm/leetcode-go/heapq"
+)
 
 /*
 给你一个链表数组，每个链表都已经按升序排列。
@@ -12,7 +15,7 @@ func mergeKLists(lists []*ListNode) *ListNode {
 	}
 	vhead := &ListNode{}
 	p := vhead
-	pq := make(PriorityQueue, len(lists))
+	pq := make(heapq.PriorityQueue[int, *ListNode], len(lists))
 	for i, head := range lists {
 		if head != nil {
 			pq[i] = head
@@ -29,28 +32,4 @@ func mergeKLists(lists []*ListNode) *ListNode {
 		p = p.Next
 	}
 	return vhead.Next
-}
-
-type PriorityQueue []*ListNode
-
-func (q PriorityQueue) Len() int { return len(q) }
-
-func (q PriorityQueue) Less(i, j int) bool {
-	return q[i].Val < q[j].Val
-}
-
-func (q PriorityQueue) Swap(i, j int) {
-	q[i], q[j] = q[j], q[i]
-}
-
-func (q *PriorityQueue) Push(x interface{}) {
-	*q = append(*q, x.(*ListNode))
-}
-
-func (q *PriorityQueue) Pop() interface{} {
-	old := *q
-	n := len(old)
-	x := old[n-1]
-	*q = old[:n-1]
-	return x
 }

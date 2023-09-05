@@ -15,6 +15,10 @@ func NewList(vals ...int) *ListNode {
 	return h.Next
 }
 
+func (n *ListNode) Value() int {
+	return n.Val
+}
+
 func (n *ListNode) Vals() []int {
 	vals := make([]int, 0)
 	for i := n; i != nil; i = i.Next {
