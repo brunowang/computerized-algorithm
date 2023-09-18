@@ -1,5 +1,9 @@
 package linkedlist
 
+/*
+leetcode206. 反转链表
+给你单链表的头节点 head ，请你反转链表，并返回反转后的链表。
+*/
 func reverseList(head *ListNode) *ListNode {
 	var prev *ListNode
 	curr := head
